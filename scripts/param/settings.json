@@ -1,0 +1,20 @@
+{
+  "experiment_data": {
+    "base_location": "/home/parallels/Desktop/scratch",
+    "treatments": ["io-sense-only"],
+    "avida_analysis_dump": "analysis",
+    "avida_raw_dump": "data",
+    "script_analysis_dump": "dataspace",
+    "population_detail_fname": "dom_[ENV].dat"
+  },
+  "treatment_configs": {
+    "io-sense-only": {
+      "environments": ["nand+not-", "nand-not+"],
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+                             {"env":"nand+not-", "task":"Not"},
+                              {"env":"nand-not+", "task":"Nand"},
+                              {"env":"nand-not+", "task":"Not"}]
+    }
+  }
+}
