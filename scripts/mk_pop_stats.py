@@ -20,6 +20,22 @@ def _encode_phenotype(organism_x_environment, encoding):
         phenotype.append(trait)
     return phenotype
 
+def _generate_environment_reference(environments, cycle_length, updates):
+    """
+    Given a list of cyclic environments (in order of encountered) and the cycle length,
+     this function will construct a reference array that indicates the environment at any given point in time.
+    """
+    envs = [None for u in range(0, updates + 1)]
+    eid = 0
+    cu = 0
+    for u in range(0, updates + 1):
+        if (cu >= cycle_length):
+            cu = 0
+            eid = (eid + 1) % len(environments)
+        envs[u] = environments[eid]
+        cu += 1
+    return envs
+
 def main():
     """
     This script makes population stats csv files.
@@ -34,6 +50,7 @@ def main():
     experiment_loc = settings["experiment_data"]["base_location"]
     dump_loc = settings["experiment_data"]["script_analysis_dump"]
     pull_loc = settings["experiment_data"]["avida_analysis_dump"]
+    # Pull out some other relevant settings
     experiment_treatments = settings["experiment_data"]["treatments"]
     treat_configs = settings["treatment_configs"]
     # Rummage through the data!
@@ -41,6 +58,8 @@ def main():
         print treatment
         # Load up treat's config
         treat_config = treat_configs[treatment]
+        # Build environment reference
+        env_ref = _generate_environment_reference(treat_config["environments"], treat_config["cycle_length"], treat_config["total_updates"])
         # We want to pull data from the pull_loc
         treat_in = os.path.join(experiment_loc, treatment, pull_loc)
         # We want to push data from the dump_loc
@@ -51,7 +70,7 @@ def main():
         phenotype_table = [binary(i, 4).split("b")[-1] for i in range(0, len(treat_config["phenotype_encoding"])**2)]
         print ("I'll be looking at these phenotypes: " + str(phenotype_table))
         # This will hold the csv content for population stats
-        treat_pop_stats_csv_content = "treatment,replicate,update,population_size,%s\n" % ",".join(phenotype_table)
+        treat_pop_stats_csv_content = "treatment,replicate,update,environment,population_size,%s\n" % ",".join(phenotype_table)
         # Rummage through the reps!
         for rep in reps:
             print rep
@@ -90,7 +109,7 @@ def main():
                     pop_stats["population_size"] += num_cpus
                 # Add line to treatment csv for this population slice
                 #    "treatment,replicate,update,population_size,[phenotypes]"
-                treat_pop_stats_csv_content += "%s,%s,%s,%d,%s\n" % (treatment, rep, update, pop_stats["population_size"], ",".join([str(pop_stats[ptype]) for ptype in phenotype_table]))
+                treat_pop_stats_csv_content += "%s,%s,%s,%s,%d,%s\n" % (treatment, rep, update, env_ref[int(update)], pop_stats["population_size"], ",".join([str(pop_stats[ptype]) for ptype in phenotype_table]))
         # Make sure treat_out exists. If not, create it.
         mkdir_p(treat_out)
         # Write out our pop stats file

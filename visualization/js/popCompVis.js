@@ -22,6 +22,13 @@ var canvas = frame.append("g");
 frame.attr({"width": frameWidth, "height": frameHeight});
 canvas.attr({"transform": "translate(" + margin.left + "," + margin.top + ")"});
 
+// Function for translating environments from csv format to vis format
+var envTranslate = function(env) {
+  env_table = {"nand+not-": "ENV-NAND", "nand-not+": "ENV-NOT"};
+  return env_table[env];
+
+}
+
 // Setup axes
 // - X axis
 var xScale = d3.scale.linear();
@@ -39,6 +46,7 @@ var dataAccessor = function(row) {
   var replicate = row.replicate;
   var update = Number(row.update);
   var popSize = Number(row.population_size);
+  var environment = row.environment;
   var popComposition = [];
   var cummulativeVal = 0;
   for (var i = 0; i < validStates.length; i++) {
@@ -53,6 +61,7 @@ var dataAccessor = function(row) {
     replicate: replicate,
     update: update,
     popSize: popSize,
+    environment: environment,
     popComposition: popComposition
   };
 }
@@ -69,6 +78,18 @@ var dataCallback = function(data) {
 
   var update = function() {
     // This is where we draw things.
+    // Draw environment
+    var environments = envCanvas.selectAll("rect").data(filteredData);
+    environments.enter().append("rect");
+    environments.exit().remove();
+    environments.attr({
+      "y": function(d) { return yScale(3650); },
+      "x": function(d) { return xScale(d.update); },
+      "height": function(d) { return 5; },
+      "width": function(d) { return xScale(stepSize); },
+      "class": function(d) { return envTranslate(d.environment); }
+    });
+    // Draw population stats
     var populations = dataCanvas.selectAll("g").data(filteredData, function(d) { return String(d.update); } );
     populations.enter().append("g");
     populations.exit().remove();

@@ -98,3 +98,11 @@ $P0011-color: lighten(grey, 30);
   @extend .state_block;
   fill: $P0011-color;
 }
+
+.ENV-NAND {
+  fill: $P1010-color;
+}
+
+.ENV-NOT {
+  fill: $P0101-color;
+}

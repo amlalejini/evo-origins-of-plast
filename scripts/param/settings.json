@@ -14,6 +14,8 @@
   "treatment_configs": {
     "io-sense-only": {
       "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
       "tasks": ["Nand", "Not"],
       "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
                              {"env":"nand+not-", "task":"Not"},

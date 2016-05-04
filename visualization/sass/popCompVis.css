@@ -55,4 +55,10 @@
 .P0011 {
   fill: #cdcdcd; }
 
+.ENV-NAND {
+  fill: #0000cc; }
+
+.ENV-NOT {
+  fill: cyan; }
+
 /*# sourceMappingURL=popCompVis.css.map */
