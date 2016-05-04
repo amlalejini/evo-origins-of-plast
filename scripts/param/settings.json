@@ -2,7 +2,7 @@
   "experiment_data": {
     "base_location": "/mnt/home/lalejini/Data/io-sense",
     "treatments": ["io-sense-only", "io-sense-mut", "io-sense-mut-high", "io-sense-cycle-50", "io-sense-cycle-200"],
-    "avida_analysis_dump": "analysis",
+    "avida_analysis_dump": "pop_analysis",
     "avida_raw_dump": "data",
     "script_analysis_dump": "dataspace"
   },
