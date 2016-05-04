@@ -3,13 +3,13 @@
 This script makes population statistics csv files from Avida analysis data.
 """
 import json, os
-import util.parse_avida_output as parse_utils
+import utilities.parse_avida_output as parse_utils
+from utilities.utilities import mkdir_p, binary
 
-def binary(num, length=8):
-    return format(num, '#0{}b'.format(length + 2))
-
-def encode_phenotype(organism_x_environment, encoding):
+def _encode_phenotype(organism_x_environment, encoding):
     """
+    Given org X environment dictionary and an encoding scheme (specified in settings file),
+     return the encoded phenotype.
     """
     phenotype = []
     for i in range(0, len(encoding)):
@@ -39,7 +39,6 @@ def main():
     # Rummage through the data!
     for treatment in experiment_treatments:
         print treatment
-        treat_pop_stats_csv_content = ""
         # Load up treat's config
         treat_config = treat_configs[treatment]
         # We want to pull data from the pull_loc
@@ -51,6 +50,8 @@ def main():
         # Build list of all possible phenotypes for this treatment
         phenotype_table = [binary(i, 4).split("b")[-1] for i in range(0, len(treat_config["phenotype_encoding"])**2)]
         print ("I'll be looking at these phenotypes: " + str(phenotype_table))
+        # This will hold the csv content for population stats
+        treat_pop_stats_csv_content = "treatment,replicate,update,population_size,%s\n" % ",".join(phenotype_table)
         # Rummage through the reps!
         for rep in reps:
             print rep
@@ -58,6 +59,7 @@ def main():
             rep_out = os.path.join(treat_out, rep)
             # Grab all of the population slices
             pops = [pname for pname in os.listdir(rep_in) if os.path.isdir(os.path.join(rep_in, pname))]
+            pops.sort()
             updates = []
             # Do some work on each population
             for pop in pops:
@@ -73,21 +75,27 @@ def main():
                 # Pull in population data by environment
                 population_x_env = {}
                 for env in treat_config["environments"]:
-                    det_file = "dom_" + env + "_detail.dat"
-                    with open(os.path.join(pop_in, det_file)) as fp:
+                    env_in = os.path.join(pop_in, env)
+                    det_file = "pop_detail.dat"
+                    with open(os.path.join(env_in, det_file)) as fp:
                         population_x_env[env] = parse_utils.detail_file_extract(fp)
                 # Let's take a look at the information we pulled in
                 oids = population_x_env[treat_config["environments"][-1]].keys()
                 for oid in oids:
                     oid_x_env = {env:population_x_env[env][oid] for env in population_x_env.keys()}
                     encoding = treat_config["phenotype_encoding"]
-                    phenotype = encode_phenotype(oid_x_env, encoding)
+                    phenotype = _encode_phenotype(oid_x_env, encoding)
                     num_cpus = int(oid_x_env[treat_config["environments"][-1]]["Number of CPUs"])
                     pop_stats[''.join(map(str, phenotype))] += num_cpus
                     pop_stats["population_size"] += num_cpus
-                # Add line to rep csv file for this population slice
                 # Add line to treatment csv for this population slice
-                #"treatment,replicate,update,population_size,[phenotypes]"
+                #    "treatment,replicate,update,population_size,[phenotypes]"
+                treat_pop_stats_csv_content += "%s,%s,%s,%d,%s\n" % (treatment, rep, update, pop_stats["population_size"], ",".join([str(pop_stats[ptype]) for ptype in phenotype_table]))
+        # Make sure treat_out exists. If not, create it.
+        mkdir_p(treat_out)
+        # Write out our pop stats file
+        with open(os.path.join(treat_out, "pop_stats.csv"), "w") as fp:
+            fp.write(treat_pop_stats_csv_content)
 
 if __name__ == "__main__":
     main()
