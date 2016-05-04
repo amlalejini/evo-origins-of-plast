@@ -8,8 +8,8 @@
     "population_detail_fname": "dom_[ENV].dat"
   },
   "avida_analysis_config": {
-    "treatments_to_analyze": ["treat-baseline", "treat-cycle-50", "treat-cycle-200", "treat-low-mut", "treat-mut-high"],
-    "configs_loc": "~/devo_ws/evo-origins-of-plast/configs",
+    "treatments_to_analyze": ["treat-baseline"],
+    "configs_loc": "/home/parallels/devo_ws/evo-origins-of-plast/configs",
     "analysis_scripts_to_run": ["population_analyze.cfg"]
   },
   "treatment_configs": {
