@@ -1,0 +1,10 @@
+set description Exp: phenotypic_plasticity/io-sense; Treatment: io-sense-cycle-200
+set class_pref 150
+set mem_request 4
+set email_when final
+set email lalejini@msu.edu
+set walltime 4
+set config_dir /mnt/home/lalejini/exp_ws/avida_experiments/phenotypic_plasticity/io-sense/io-sense-cycle-200
+set dest_dir /mnt/scratch/lalejini/exp_ws/phenotypic_plasticity/io-sense/io-sense-cycle-200/data
+
+1..50 single_runs ./avida -s $seed
