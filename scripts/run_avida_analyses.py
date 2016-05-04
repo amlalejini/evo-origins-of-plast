@@ -34,7 +34,11 @@ def main():
             cmd = "./avida -set ANALYZE_FILE %s -a" % ascript
             return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
             # Move analyze files to destination
-            
+            # mv treatment_config/data/analysis base_location/treatment
+            src = os.path.join(treat_config, "data", "analysis")
+            dest = os.path.join(experiment_loc, treatment)
+            cmd = "mv %s %s" % (src, dest)
+            return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
 
 if __name__ == "__main__":
     main()
