@@ -37,8 +37,10 @@ def main():
             # mv treatment_config/data/analysis base_location/treatment
             src = os.path.join(treat_config, "data", "analysis")
             dest = os.path.join(experiment_loc, treatment)
-            cmd = "mv %s %s" % (src, dest)
+            cmd = "rsync -r %s %s" % (src, dest)
             return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
+            # remove crusty data
+            return_code = subprocess.call("rm -rf %s" % src, shell = True, cwd = treat_config)
 
 if __name__ == "__main__":
     main()
