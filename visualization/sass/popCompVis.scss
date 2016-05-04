@@ -1,0 +1,100 @@
+
+$P0000-color: lighten(black, 30);
+$P0101-color: saturate(cyan, 100);
+$P1010-color: saturate(darken(blue, 10), 100);
+$P1111-color: darken(white, 10);
+
+$P0001-color: saturate(lighten(#5A2668, 5), 100);
+$P1000-color: saturate(lighten(#734CB9, 20), 100);
+$P1011-color: saturate(#D793EA, 100);
+$P1101-color: saturate(darken(mix(#928ADD, violet, 20), 15), 100);
+
+$P1001-color: saturate(lighten(green, 25), 100);
+
+$P0010-color: #ff6854;
+$P0100-color: #ff6854;
+$P0111-color: #ff6854;
+$P1110-color: #ff6854;
+
+$P0110-color: darken(red, 10);
+
+
+$P1100-color: lighten(grey, 30);
+$P0011-color: lighten(grey, 30);
+
+.state_block {
+  z-index: 1;
+}
+
+.P0000 {
+  @extend .state_block;
+  fill: $P0000-color;
+}
+.P0101 {
+  @extend .state_block;
+  fill: $P0101-color;
+}
+.P1010 {
+  @extend .state_block;
+  fill: $P1010-color;
+}
+.P0101 {
+  @extend .state_block;
+  fill: $P0101-color;
+}
+.P1010 {
+  @extend .state_block;
+  fill: $P1010-color;
+}
+.P1111 {
+  @extend .state_block;
+  fill: $P1111-color;
+}
+.P0001 {
+  @extend .state_block;
+  fill: $P0001-color;
+}
+.P1000 {
+  @extend .state_block;
+  fill: $P1000-color;
+}
+.P1011 {
+  @extend .state_block;
+  fill: $P1011-color;
+}
+.P1101 {
+  @extend .state_block;
+  fill: $P1101-color;
+}
+.P1001 {
+  @extend .state_block;
+  fill: $P1001-color;
+}
+.P0010 {
+  @extend .state_block;
+  fill: $P0010-color;
+}
+.P0100 {
+  @extend .state_block;
+  fill: $P0100-color;
+}
+.P0111 {
+  @extend .state_block;
+  fill: $P0111-color;
+}
+.P1110 {
+  @extend .state_block;
+  fill: $P1110-color;
+}
+.P0110 {
+  @extend .state_block;
+  fill: $P0110-color;
+}
+.P1100 {
+  @extend .state_block;
+  fill: $P1100-color;
+}
+.P0011 {
+  @extend .state_block;
+  fill: $P0011-color;
+}

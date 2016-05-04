@@ -1,0 +1,58 @@
+.state_block, .P0000, .P0101, .P1010, .P1111, .P0001, .P1000, .P1011, .P1101, .P1001, .P0010, .P0100, .P0111, .P1110, .P0110, .P1100, .P0011 {
+  z-index: 1; }
+
+.P0000 {
+  fill: #4d4d4d; }
+
+.P0101 {
+  fill: cyan; }
+
+.P1010 {
+  fill: #0000cc; }
+
+.P0101 {
+  fill: cyan; }
+
+.P1010 {
+  fill: #0000cc; }
+
+.P1111 {
+  fill: #e6e6e6; }
+
+.P0001 {
+  fill: #8400a8; }
+
+.P1000 {
+  fill: #a16cff; }
+
+.P1011 {
+  fill: #e37eff; }
+
+.P1101 {
+  fill: #df24ff; }
+
+.P1001 {
+  fill: #01ff01; }
+
+.P0010 {
+  fill: #ff6854; }
+
+.P0100 {
+  fill: #ff6854; }
+
+.P0111 {
+  fill: #ff6854; }
+
+.P1110 {
+  fill: #ff6854; }
+
+.P0110 {
+  fill: #cc0000; }
+
+.P1100 {
+  fill: #cdcdcd; }
+
+.P0011 {
+  fill: #cdcdcd; }
+
+/*# sourceMappingURL=popCompVis.css.map */
