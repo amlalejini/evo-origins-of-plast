@@ -1,14 +1,14 @@
 {
   "experiment_data": {
-    "base_location": "/home/parallels/Desktop/scratch",
+    "base_location": "/mnt/home/lalejini/Data/io-sense",
     "treatments": ["io-sense-only", "io-sense-mut", "io-sense-mut-high", "io-sense-cycle-50", "io-sense-cycle-200"],
     "avida_analysis_dump": "analysis",
     "avida_raw_dump": "data",
     "script_analysis_dump": "dataspace"
   },
   "avida_analysis_config": {
-    "treatments_to_analyze": ["io-sense-only"],
-    "configs_loc": "/home/parallels/devo_ws/evo-origins-of-plast/configs",
+    "treatments_to_analyze": ["io-sense-only", "io-sense-mut", "io-sense-mut-high", "io-sense-cycle-50", "io-sense-cycle-200"],
+    "configs_loc": "/mnt/home/lalejini/exp_ws/evo-origins-of-plast/configs",
     "analysis_scripts_to_run": ["population_analyze.cfg"]
   },
   "treatment_configs": {
