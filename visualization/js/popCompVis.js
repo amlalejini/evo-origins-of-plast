@@ -1,10 +1,10 @@
 
 // Setup data-specific parameters
-var dataPath = "data/fake_pop_stats.csv";
+var dataPath = "data/pop_stats.csv";
 var validStates = ["0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111"]
-var yDomain = [0, 1000];
+var yDomain = [0, 100000];
 var xDomain = [0, 3600];
-var stepSize = 99
+var stepSize = 499
 var currentTreatment = "io-sense-only";
 var currentReplicate = "single_runs_1";
 var treatments = [];
