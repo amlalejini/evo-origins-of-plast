@@ -63,3 +63,6 @@ target/
 
 #HPCC-specific stuff
 scripts/hpcc/*
+
+#Ignore analysis stuff
+configs/*/data/*
