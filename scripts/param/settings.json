@@ -21,6 +21,46 @@
                              {"env":"nand+not-", "task":"Not"},
                               {"env":"nand-not+", "task":"Nand"},
                               {"env":"nand-not+", "task":"Not"}]
+    },
+    "io-sense-mut": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+                             {"env":"nand+not-", "task":"Not"},
+                              {"env":"nand-not+", "task":"Nand"},
+                              {"env":"nand-not+", "task":"Not"}]
+    },
+    "io-sense-mut-high": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+                             {"env":"nand+not-", "task":"Not"},
+                              {"env":"nand-not+", "task":"Nand"},
+                              {"env":"nand-not+", "task":"Not"}]
+    },
+    "io-sense-cycle-50": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 50,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+                             {"env":"nand+not-", "task":"Not"},
+                              {"env":"nand-not+", "task":"Nand"},
+                              {"env":"nand-not+", "task":"Not"}]
+    },
+    "io-sense-cycle-200": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 200,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+                             {"env":"nand+not-", "task":"Not"},
+                              {"env":"nand-not+", "task":"Nand"},
+                              {"env":"nand-not+", "task":"Not"}]
     }
   }
 }
