@@ -71,6 +71,10 @@ def main():
         print ("I'll be looking at these phenotypes: " + str(phenotype_table))
         # This will hold the csv content for population stats
         treat_pop_stats_csv_content = "treatment,replicate,update,environment,population_size,%s\n" % ",".join(phenotype_table)
+        with open(os.path.join(treat_out, "pop_stats.csv"), "w") as fp:
+            fp.write(treat_pop_stats_csv_content)
+        treat_pop_stats_csv_content = ""
+        write_cntr = 0
         # Rummage through the reps!
         for rep in reps:
             print rep
@@ -110,10 +114,16 @@ def main():
                 # Add line to treatment csv for this population slice
                 #    "treatment,replicate,update,population_size,[phenotypes]"
                 treat_pop_stats_csv_content += "%s,%s,%s,%s,%d,%s\n" % (treatment, rep, update, env_ref[int(update)], pop_stats["population_size"], ",".join([str(pop_stats[ptype]) for ptype in phenotype_table]))
+                if write_cntr >= 5:
+                    with open(os.path.join(treat_out, "pop_stats.csv"), "a") as fp:
+                        fp.write(treat_pop_stats_csv_content)
+                    treat_pop_stats_csv_content = ""
+                    write_cntr = 0
+                write_cntr += 1
         # Make sure treat_out exists. If not, create it.
         mkdir_p(treat_out)
         # Write out our pop stats file
-        with open(os.path.join(treat_out, "pop_stats.csv"), "w") as fp:
+        with open(os.path.join(treat_out, "pop_stats.csv"), "a") as fp:
             fp.write(treat_pop_stats_csv_content)
 
 if __name__ == "__main__":
