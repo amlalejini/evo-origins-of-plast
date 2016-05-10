@@ -40,7 +40,7 @@ def main():
     """
     This script makes population stats csv files.
     """
-    settings_fn = "param/settings.json"
+    settings_fn = "param/stepping_stones_settings.json"
     settings = None
 
     # Load settings from settings file

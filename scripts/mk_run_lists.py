@@ -14,7 +14,8 @@ if __name__ == "__main__":
     # Go ahead and extract experiment name and list of treatment specifications
     experiment = specs["experiment"]
     treatments = specs["treatments"]
-
+    dist_analyses = specs["distribute_analyses"]
+    print treatments.keys()
     # Build run_list file for each treatment
     for treatment in treatments:
         ###################
@@ -86,8 +87,26 @@ set dest_dir %s
         instr_set_config = os.path.join(config_src_dir, _get_spec("instruction_set"))
         env_config = os.path.join(config_src_dir, _get_spec("ENVIRONMENT_FILE"))
         event_config = os.path.join(config_src_dir, _get_spec("EVENT_FILE"))
-        cfgs = [avida_config, ancestor_config, instr_set_config, env_config, event_config]
+        executable = os.path.join(config_src_dir, _get_spec("executable"))
+        cfgs = [avida_config, ancestor_config, instr_set_config, env_config, event_config, executable]
         for cfg in cfgs: shutil.copyfile(cfg, os.path.join(config_dest, cfg.split("/")[-1]))
+        # should we copy over analyses?
+        if dist_analyses:
+            # save out avida cmd args necessary to rerun with same settings
+            with open(os.path.join(config_dest, "avida_args.info"), "w") as fp:
+                fp.write("-c %s %s" % (_get_spec("avida_config"), arg_str))
+            # for each specified analysis file
+            for afile in _get_spec("analysis_files"):
+                # set the 'experiment'/treatment name
+                fcontent = ""
+                with open(os.path.join(config_src_dir, afile)) as fp:
+                    for line in fp:
+                        if "SET e" in line:
+                            fcontent += "SET e %s\n" % treatment
+                        else:
+                            fcontent += line
+                with open(os.path.join(config_dest, afile), "w") as fp:
+                    fp.write(fcontent)
         # Write out the run list file
         with open(os.path.join(config_dest, "run_list-%s" % treatment), "w") as fp:
             fp.write(run_list)

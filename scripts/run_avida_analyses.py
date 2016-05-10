@@ -12,7 +12,7 @@ def main():
     """
     Main script
     """
-    settings_fn = "param/settings.json"
+    settings_fn = "param/stepping_stones_of_plasticity.json"
     settings = None
     # Load settings from settings file
     with open(settings_fn) as fp:
@@ -26,13 +26,26 @@ def main():
 
     for treatment in treats_to_analyze:
         print "Analyzing %s" % treatment
-        treat_config = os.path.join(treats_configs_loc, treatment)
+        treat_config = os.path.join(treats_configs_loc, treatment, "configs")
         for ascript in analyses:
             print "  Running %s" % ascript
             return_code = subprocess.call("pwd", shell = True, cwd = treat_config)
+            fp = None
+            args = ""
+            try:
+                fp = open("avida_args.info", "r")
+            except:
+                print("Couldn't find arg specification. Will just assume defaults.")
+            else:
+                for line in fp:
+                    args = line
+                    break
+                fp.close()
+
             # Build avida analyze command and run it
-            cmd = "./avida -set ANALYZE_FILE %s -a" % ascript
-            return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
+            cmd = "./avida %s -set ANALYZE_FILE %s -a" % (args, ascript)
+            print cmd
+            #return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
             # Move analyze files to destination
             # mv treatment_config/data/analysis base_location/treatment
             src = os.path.join(treat_config, "data", "analysis")

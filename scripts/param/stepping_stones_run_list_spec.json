@@ -15,12 +15,16 @@
     "dest_dir_base": "/mnt/scratch/lalejini/exp_ws/stepping_stones_of_plasticity",
     "ancestor_org": "default-heads.org",
     "instruction_set": "instset-heads.cfg",
+    "analysis_files": ["population_analyze.cfg"],
+    "executable": "avida",
     "-set": {
       "EVENT_FILE": "events-baseline.cfg",
       "ENVIRONMENT_FILE": "environment.cfg"
     }
   },
   "experiment": "stepping_stones_of_plasticity",
+  "treatments_to_sub": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+  "distribute_analyses": true,
   "treatments": {
     "baseline-unrestricted": {
       "inherit_from": "shared_settings",
