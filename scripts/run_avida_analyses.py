@@ -30,6 +30,7 @@ def main():
         for ascript in analyses:
             print "  Running %s" % ascript
             return_code = subprocess.call("pwd", shell = True, cwd = treat_config)
+
             fp = None
             args = ""
             try:
@@ -43,9 +44,11 @@ def main():
                 fp.close()
 
             # Build avida analyze command and run it
-            cmd = "./avida %s -set ANALYZE_FILE %s -a" % (args, ascript)
-            print cmd
-            #return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
+            if args != "":
+                cmd = "./avida %s -set ANALYZE_FILE %s -a" % (args, ascript)
+            else:
+                cmd = "./avida -set ANALYZE_FILE %s -a" % ascript
+            return_code = subprocess.call(cmd, shell = True, cwd = treat_config)
             # Move analyze files to destination
             # mv treatment_config/data/analysis base_location/treatment
             src = os.path.join(treat_config, "data", "analysis")

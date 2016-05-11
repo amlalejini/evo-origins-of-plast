@@ -9,7 +9,7 @@ This module reads from main and composes run list files for an experiment.
 
 if __name__ == "__main__":
     # Grab run list specification
-    with open("param/stepping_stones_run_list_spec.json") as fp:
+    with open("param/stepping_stones_exp_config_settings.json") as fp:
         specs = json.load(fp)
     # Go ahead and extract experiment name and list of treatment specifications
     experiment = specs["experiment"]

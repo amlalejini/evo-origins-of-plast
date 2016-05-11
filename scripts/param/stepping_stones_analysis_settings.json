@@ -1,0 +1,220 @@
+{
+  "experiment_data": {
+    "base_location": "/mnt/scratch/lalejini/stepping_stones_of_plasticity",
+    "treatments": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+    "avida_analysis_dump": "pop_analysis",
+    "avida_raw_dump": "data",
+    "script_analysis_dump": "dataspace"
+  },
+  "avida_analysis_config": {
+    "treatments_to_analyze": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+    "configs_loc": "/mnt/scratch/lalejini/stepping_stones_of_plasticity/",
+    "analysis_scripts_to_run": ["population_analyze.cfg"]
+  },
+  "experiment_submission": {
+    "dist_qsub_path": "/mnt/home/lalejini/dist_qsub",
+    "treatments_to_sub": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"]
+  },
+  "treatment_configs": {
+    "baseline-unrestricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "baseline-subopt-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "baseline-uncon-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "baseline-full-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "low-mut-unrestricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "low-mut-subopt-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "low-mut-uncon-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "low-mut-full-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "high-mut-unrestricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "high-mut-subopt-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "high-mut-uncon-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "high-mut-full-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-50-unrestricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 50,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-50-subopt-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 50,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-50-uncon-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 50,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-50-full-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 50,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-200-unrestricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 200,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-200-subopt-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 200,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-200-uncon-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 200,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "cycle-200-full-restricted": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 200,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [{"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    }
+  }
+}
