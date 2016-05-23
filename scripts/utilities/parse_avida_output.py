@@ -20,8 +20,15 @@ def detail_file_extract(detail_fp):
     # Step 2) Consume Organisms
     ###
     orgs = {}
+    org_cnt = 0
     for line in detail_fp:
         org_dets = line.strip().split(" ")
         org = {details[i]:org_dets[i] for i in range(0, len(org_dets))}
-        orgs[org["Genotype ID"]] = org
+        org_id = -1
+        if "Genotype ID" in org:
+            org_id = org["Genotype ID"]
+        else:
+            org_id = org_cnt
+        orgs[org_id] = org
+        org_cnt += 1
     return orgs
