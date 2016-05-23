@@ -18,15 +18,17 @@ def main():
         settings = json.load(fp)
     # Pull out general locations of interest
     experiment_loc = settings["experiment_data"]["base_location"]
-    treats_configs_loc = settings["avida_analysis_config"]["config_loc"]
+    treats_configs_loc = settings["avida_analysis_config"]["configs_loc"]
     # Pull out some other settings
     treats_to_cp = settings["avida_analysis_config"]["treatments_to_analyze"]
 
     for treatment in treats_to_cp:
         print "Copying %s " % treatment
         treat_analyses_src = os.path.join(treats_configs_loc, treatment, "configs", "data", "analysis")
-        treat_analyses_dest = os.path.join("test", treatment)
-        cmd = "cp -r %s %s" treat_analyses_src treat_analyses_dest
+        treat_analyses_dest = os.path.join(experiment_loc, treatment)
+        print treat_analyses_dest
+        mkdir_p(treat_analyses_dest)
+        cmd = "cp -r %s %s" % (treat_analyses_src, treat_analyses_dest)
         return_code = subprocess.call(cmd, shell = True)
 
 if __name__ == "__main__":
