@@ -34,7 +34,7 @@ def main():
             fp = None
             args = ""
             try:
-                fp = open("avida_args.info", "r")
+                fp = open(os.path.join(treat_config, "avida_args.info"), "r")
             except:
                 print("Couldn't find arg specification. Will just assume defaults.")
             else:
