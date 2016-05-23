@@ -10,7 +10,7 @@
     "walltime": "4",
     "replicates_begin-end": [1, 50],
     "avida_config": "avida-baseline.cfg",
-    "config_source_dir": "/home/parallels/devo_ws/evo-origins-of-plast/configs/stepping-stones",
+    "config_source_dir": "/mnt/scratch/lalejini/exp_ws/evo-origins-of-plast/configs/stepping-stones",
     "config_dir_base": "/mnt/scratch/lalejini/stepping_stones_of_plasticity",
     "dest_dir_base": "/mnt/scratch/lalejini/stepping_stones_of_plasticity",
     "ancestor_org": "default-heads.org",
