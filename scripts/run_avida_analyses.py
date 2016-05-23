@@ -12,7 +12,7 @@ def main():
     """
     Main script
     """
-    settings_fn = "param/stepping_stones_of_plasticity.json"
+    settings_fn = "param/stepping_stones_analysis_settings.json"
     settings = None
     # Load settings from settings file
     with open(settings_fn) as fp:
