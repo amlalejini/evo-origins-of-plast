@@ -1,0 +1,48 @@
+set description experiment: stepping_stones_of_plasticity
+set class_pref 150
+set mem_request 4
+set email_when final
+set email lalejini@msu.edu
+set walltime 4
+set config_dir /mnt/scratch/lalejini/stepping_stones_of_plasticity2/configs
+set dest_dir /mnt/scratch/lalejini/stepping_stones_of_plasticity2/data
+
+1..50 high-mut-full-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 3 -set COPY_MUT_PROB 0.0125
+
+1..50 cycle-50-unrestricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-short-cycle-hres.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075
+
+1..50 low-mut-uncon-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 1 -set COPY_MUT_PROB 0.0025
+
+1..50 cycle-50-subopt-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-short-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 2 -set COPY_MUT_PROB 0.0075
+
+1..50 high-mut-subopt-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 2 -set COPY_MUT_PROB 0.0125
+
+1..50 cycle-200-subopt-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-long-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 2 -set COPY_MUT_PROB 0.0075
+
+1..50 cycle-200-uncon-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-long-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 1 -set COPY_MUT_PROB 0.0075
+
+1..50 baseline-full-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 3 -set COPY_MUT_PROB 0.0075
+
+1..50 low-mut-unrestricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline-hres.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0025
+
+1..50 cycle-50-full-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-short-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 3 -set COPY_MUT_PROB 0.0075
+
+1..50 low-mut-full-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 3 -set COPY_MUT_PROB 0.0025
+
+1..50 cycle-50-uncon-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-short-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 1 -set COPY_MUT_PROB 0.0075
+
+1..50 low-mut-subopt-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 2 -set COPY_MUT_PROB 0.0025
+
+1..50 high-mut-unrestricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline-hres.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0125
+
+1..50 baseline-subopt-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 2 -set COPY_MUT_PROB 0.0075
+
+1..50 baseline-uncon-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 1 -set COPY_MUT_PROB 0.0075
+
+1..50 baseline-unrestricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline-hres.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075
+
+1..50 cycle-200-unrestricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-long-cycle-hres.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075
+
+1..50 high-mut-uncon-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-baseline.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 1 -set COPY_MUT_PROB 0.0125
+
+1..50 cycle-200-full-restricted__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE events-long-cycle.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 3 -set COPY_MUT_PROB 0.0075

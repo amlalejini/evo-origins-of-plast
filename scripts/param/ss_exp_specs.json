@@ -1,35 +1,37 @@
 
 {
-  "_comment": "run_list composition settings for io-sense experiments",
-  "shared_settings": {
-    "__comment": "Shared settings will be shared with multiple treatments. Each treatment will indicate what settings it will use for its runlist file.",
+  "_comment": "run_list composition settings",
+  "config_source_dir": "/home/parallels/devo_ws/evo-origins-of-plast/configs/stepping-stones",
+  "run_list_header": {
     "email": "lalejini@msu.edu",
     "email_when": "final",
     "class_pref": "150",
     "mem_request": "4",
     "walltime": "4",
+    "config_dir": "/mnt/scratch/lalejini/stepping_stones_of_plasticity/configs",
+    "dest_dir": "/mnt/scratch/lalejini/stepping_stones_of_plasticity/data"
+  },
+  "shared_settings": {
+    "__comment": "Shared settings will be shared with multiple treatments. Each treatment will indicate what settings it will use for its runlist file.",
     "replicates_begin-end": [1, 50],
-    "avida_config": "avida-baseline.cfg",
-    "config_source_dir": "/mnt/scratch/lalejini/exp_ws/evo-origins-of-plast/configs/stepping-stones",
-    "config_dir_base": "/mnt/scratch/lalejini/stepping_stones_of_plasticity",
-    "dest_dir_base": "/mnt/scratch/lalejini/stepping_stones_of_plasticity",
+    "avida_config": "avida.cfg",
     "ancestor_org": "default-heads.org",
     "instruction_set": "instset-heads.cfg",
-    "analysis_files": ["population_analyze.cfg", "lineage_analyze.cfg", "final-dom_analyze.cfg"],
     "executable": "avida",
     "-set": {
       "EVENT_FILE": "events-baseline.cfg",
-      "ENVIRONMENT_FILE": "environment.cfg"
+      "ENVIRONMENT_FILE": "environment.cfg",
+      "COPY_MUT_PROB": 0.0075
     }
   },
   "experiment": "stepping_stones_of_plasticity",
   "treatments_to_sub": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
-  "distribute_analyses": true,
   "treatments": {
     "baseline-unrestricted": {
       "inherit_from": "shared_settings",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "EVENT_FILE": "events-baseline-hres.cfg"
       }
     },
     "baseline-subopt-restricted": {
@@ -52,64 +54,66 @@
     },
     "low-mut-unrestricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-low-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "COPY_MUT_PROB": 0.0025,
+        "EVENT_FILE": "events-baseline-hres.cfg"
       }
     },
     "low-mut-subopt-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-low-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 2
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2,
+        "COPY_MUT_PROB": 0.0025
       }
     },
     "low-mut-uncon-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-low-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 1
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1,
+        "COPY_MUT_PROB": 0.0025
       }
     },
     "low-mut-full-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-low-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 3
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3,
+        "COPY_MUT_PROB": 0.0025
       }
     },
     "high-mut-unrestricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-high-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "COPY_MUT_PROB": 0.0125,
+        "EVENT_FILE": "events-baseline-hres.cfg"
       }
     },
     "high-mut-subopt-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-high-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 2
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2,
+        "COPY_MUT_PROB": 0.0125
       }
     },
     "high-mut-uncon-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-high-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 1
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1,
+        "COPY_MUT_PROB": 0.0125
       }
     },
     "high-mut-full-restricted": {
       "inherit_from": "shared_settings",
-      "avida_config": "avida-high-mut.cfg",
       "-set": {
-        "RESTRICT_PLASTICITY_STEPPING_STONES": 3
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3,
+        "COPY_MUT_PROB": 0.0125
       }
     },
     "cycle-50-unrestricted": {
       "inherit_from": "shared_settings",
       "-set": {
-        "EVENT_FILE": "events-short-cycle.cfg",
+        "EVENT_FILE": "events-short-cycle-hres.cfg",
         "RESTRICT_PLASTICITY_STEPPING_STONES": 0
       }
     },
@@ -137,7 +141,7 @@
     "cycle-200-unrestricted": {
       "inherit_from": "shared_settings",
       "-set": {
-        "EVENT_FILE": "events-long-cycle.cfg",
+        "EVENT_FILE": "events-long-cycle-hres.cfg",
         "RESTRICT_PLASTICITY_STEPPING_STONES": 0
       }
     },

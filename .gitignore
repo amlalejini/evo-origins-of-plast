@@ -63,7 +63,7 @@ target/
 
 #HPCC-specific stuff
 scripts/hpcc/*
-scripts/stepping_stones_of_plasticity/*
+#scripts/stepping_stones_of_plasticity/*
 
 #Ignore analysis stuff
 configs/*/data/*

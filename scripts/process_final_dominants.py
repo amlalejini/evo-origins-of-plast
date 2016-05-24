@@ -88,6 +88,7 @@ def main():
             total += 1
             final_dom_csv_content += "%s,%s,%s,%s\n" % (treatment, rep, plastic, optimal)
         plasticity_overview_csv_content += "%s,%d,%d,%d\n" % (treatment, total_plastic, total_opt, total)
+    mkdir("stats_dump")
     with open(os.path.join("stats_dump", "final_dom_plasticity.csv"), "w") as fp:
         fp.write(final_dom_csv_content)
     with open(os.path.join("stats_dump", "final_dom_plasticity_overview.csv"), "w") as fp:
