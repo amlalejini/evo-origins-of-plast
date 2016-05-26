@@ -1,0 +1,98 @@
+{
+  "experiment_data": {
+    "base_location": "/home/parallels/Desktop/scratch/stepping-stones-test",
+    "treatments": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+    "avida_analysis_dump": "analysis",
+    "avida_exp_dump": "data",
+    "script_analysis_dump": "dataspace"
+  },
+  "avida_analysis_config": {
+    "treatments_to_analyze": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+    "treatments_to_test": ["cycle-200-full-restricted", "cycle-50-full-restricted"],
+    "avida_configs_loc": "/home/parallels/devo_ws/evo-origins-of-plast/configs/stepping-stones",
+    "analysis_scripts_source": "/home/parallels/devo_ws/evo-origins-of-plast/avida_analysis_scripts",
+    "analysis_scripts_to_run": ["final_dom_analyze.cfg"]
+  },
+
+  "treatment_configs": {
+    "shared_config": {
+      "environments": ["nand+not-", "nand-not+"],
+      "cycle_length": 100,
+      "total_updates": 100000,
+      "tasks": ["Nand", "Not"],
+      "phenotype_encoding": [
+        {"env":"nand+not-", "task":"Nand"},
+        {"env":"nand+not-", "task":"Not"},
+        {"env":"nand-not+", "task":"Nand"},
+        {"env":"nand-not+", "task":"Not"}]
+    },
+    "baseline-unrestricted": {
+      "inherit_from": "shared_config"
+    },
+    "baseline-subopt-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "baseline-uncon-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "baseline-full-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "low-mut-unrestricted": {
+      "inherit_from": "shared_config"
+    },
+    "low-mut-subopt-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "low-mut-uncon-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "low-mut-full-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "high-mut-unrestricted": {
+      "inherit_from": "shared_config"
+    },
+    "high-mut-subopt-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "high-mut-uncon-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "high-mut-full-restricted": {
+      "inherit_from": "shared_config"
+    },
+    "cycle-50-unrestricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 50
+    },
+    "cycle-50-subopt-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 50
+    },
+    "cycle-50-uncon-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 50
+    },
+    "cycle-50-full-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 50
+    },
+    "cycle-200-unrestricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 200
+    },
+    "cycle-200-subopt-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 200
+    },
+    "cycle-200-uncon-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 200
+    },
+    "cycle-200-full-restricted": {
+      "inherit_from": "shared_config",
+      "cycle_length": 200
+    }
+  }
+}
