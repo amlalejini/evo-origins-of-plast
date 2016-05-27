@@ -13,18 +13,20 @@
     "analysis_scripts_source": "/home/parallels/devo_ws/evo-origins-of-plast/avida_analysis_scripts",
     "analysis_scripts_to_run": ["final_dom_analyze.cfg"]
   },
-
+  "processing_config": {
+    "treatments_to_process": ["cycle-200-full-restricted", "cycle-50-full-restricted"]
+  },
   "treatment_configs": {
     "shared_config": {
       "environments": ["nand+not-", "nand-not+"],
       "cycle_length": 100,
       "total_updates": 100000,
-      "tasks": ["Nand", "Not"],
+      "tasks": ["nand", "not"],
       "phenotype_encoding": [
-        {"env":"nand+not-", "task":"Nand"},
-        {"env":"nand+not-", "task":"Not"},
-        {"env":"nand-not+", "task":"Nand"},
-        {"env":"nand-not+", "task":"Not"}]
+        {"env":"nand+not-", "task":"nand"},
+        {"env":"nand+not-", "task":"not"},
+        {"env":"nand-not+", "task":"nand"},
+        {"env":"nand-not+", "task":"not"}]
     },
     "baseline-unrestricted": {
       "inherit_from": "shared_config"
