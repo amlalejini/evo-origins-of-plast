@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <!-- everything in header must get loaded before page can load -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="sass/genDiversityVis.css"/> -->
+  </head>
+
+  <body>
+    <div class = "container">
+      <!-- Heading -->
+      <div id="banner" class = "jumbotron">
+        <h1>The Evolutionary Origins of Phenotypic Plasticity</h1>
+        <h2>Genetic Diversity over Time</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2> Dashboard </h2>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- Treatment selection -->
+                  <div class="dropdown">
+                    <button class="btn btn-block btn-default dropdown-toggle" type="button" id="treatment_selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      NONE
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="treatment_selector" id="treatment-selection-dropdown">
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end panel body -->
+          </div> <!-- end panel -->
+        </div> <!-- end col 12 -->
+      </div> <!-- end row -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-lalejini" id="vis_panel">
+            <div class="panel-heading">
+              <h2> Visualization </h2>
+            </div>
+            <div class="panel-body">
+              <div id="chart_area"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+      <!-- Include d3 js -->
+      <script src="//d3js.org/d3.v3.min.js"></script>
+      <!-- Include my script -->
+      <script src="js/genDiversity.js"></script>
+    </div>
+  </body>
+
+</html>

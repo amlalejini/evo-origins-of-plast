@@ -53,3 +53,9 @@ def extract_lineage_from_detail_file(detail_fp):
         ancestor_details = line.strip().split(" ")
         lineage_details.append({col_labels[i]: ancestor_details[i] for i in range(0, len(ancestor_details))})
     return lineage_details
+
+def genome_from_genfile(gen_fp):
+    """
+    Given a file pointer to a .gen (from avida analyze mode), return the genome as a list of instructions.
+    """
+    return [line.strip() for line in gen_fp if (line.strip() != "") and (not "#" in line)]

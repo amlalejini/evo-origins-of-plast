@@ -22,7 +22,7 @@ def main():
     configs_loc = settings["avida_analysis_config"]["avida_configs_loc"]
     analysis_scripts_src = settings["avida_analysis_config"]["analysis_scripts_source"]
     # Pull out some other settings
-    treats_to_analyze = settings["avida_analysis_config"]["treatments_to_test"]
+    treats_to_analyze = settings["avida_analysis_config"]["treatments_to_analyze"]
     analyses = settings["avida_analysis_config"]["analysis_scripts_to_run"]
 
     # Read run_list file for run settings for args by treatment

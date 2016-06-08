@@ -1,6 +1,6 @@
 {
   "experiment_data": {
-    "base_location": "/mnt/scratch/lalejini/exp_ws/stepping_stones_of_plasticity",
+    "base_location": "/home/parallels/Desktop/scratch/stepping-stones-test",
     "treatments": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
     "avida_analysis_dump": "analysis",
     "avida_exp_dump": "data",
@@ -14,7 +14,7 @@
     "analysis_scripts_to_run": ["population_analyze.cfg"]
   },
   "processing_config": {
-    "treatments_to_process": ["baseline-unrestricted", "cycle-50-unrestricted", "cycle-200-unrestricted", "low-mut-unrestricted", "high-mut-unrestricted"]
+    "treatments_to_process": ["cycle-50-full-restricted", "cycle-200-full-restricted"]
   },
   "treatment_configs": {
     "shared_config": {
