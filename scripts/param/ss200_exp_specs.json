@@ -1,0 +1,200 @@
+
+{
+  "_comment": "run_list composition settings",
+  "config_source_dir": "/home/parallels/devo_ws/evo-origins-of-plast/configs/stepping-stones200",
+  "run_list_header": {
+    "email": "lalejini@msu.edu",
+    "email_when": "final",
+    "class_pref": "150",
+    "mem_request": "4",
+    "walltime": "4",
+    "config_dir": "/mnt/scratch/lalejini/stepping_stones200/configs",
+    "dest_dir": "/mnt/scratch/lalejini/stepping_stones200/data"
+  },
+  "shared_settings": {
+    "__comment": "Shared settings will be shared with multiple treatments. Each treatment will indicate what settings it will use for its runlist file.",
+    "replicates_begin-end": [101, 300],
+    "avida_config": "avida.cfg",
+    "ancestor_org": "default-heads.org",
+    "instruction_set": "instset-heads.cfg",
+    "executable": "avida",
+    "-set": {
+      "EVENT_FILE": "events-baseline.cfg",
+      "ENVIRONMENT_FILE": "environment.cfg",
+      "COPY_MUT_PROB": 0.0075
+    }
+  },
+  "experiment": "stepping_stones_of_plasticity",
+  "treatments_to_sub": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+  "treatments": {
+    "baseline-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "EVENT_FILE": "events-baseline-hres.cfg"
+      }
+    },
+    "baseline-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2
+      }
+    },
+    "baseline-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1
+      }
+    },
+    "baseline-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3
+      }
+    },
+    "control-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "EVENT_FILE": "events-control.cfg",
+        "ENVIRONMENT_FILE": "environment-control.cfg"
+      }
+    },
+    "control-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2,
+        "EVENT_FILE": "events-control.cfg",
+        "ENVIRONMENT_FILE": "environment-control.cfg"
+      }
+    },
+    "control-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1,
+        "EVENT_FILE": "events-control.cfg",
+        "ENVIRONMENT_FILE": "environment-control.cfg"
+      }
+    },
+    "control-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3,
+        "EVENT_FILE": "events-control.cfg",
+        "ENVIRONMENT_FILE": "environment-control.cfg"
+      }
+    },
+    "low-mut-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "COPY_MUT_PROB": 0.0025
+      }
+    },
+    "low-mut-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2,
+        "COPY_MUT_PROB": 0.0025
+      }
+    },
+    "low-mut-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1,
+        "COPY_MUT_PROB": 0.0025
+      }
+    },
+    "low-mut-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3,
+        "COPY_MUT_PROB": 0.0025
+      }
+    },
+    "high-mut-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
+        "COPY_MUT_PROB": 0.0125
+      }
+    },
+    "high-mut-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2,
+        "COPY_MUT_PROB": 0.0125
+      }
+    },
+    "high-mut-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1,
+        "COPY_MUT_PROB": 0.0125
+      }
+    },
+    "high-mut-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3,
+        "COPY_MUT_PROB": 0.0125
+      }
+    },
+    "cycle-50-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-short-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+      }
+    },
+    "cycle-50-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-short-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2
+      }
+    },
+    "cycle-50-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-short-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1
+      }
+    },
+    "cycle-50-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-short-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3
+      }
+    },
+    "cycle-200-unrestricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-long-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+      }
+    },
+    "cycle-200-subopt-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-long-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 2
+      }
+    },
+    "cycle-200-uncon-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-long-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 1
+      }
+    },
+    "cycle-200-full-restricted": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "events-long-cycle.cfg",
+        "RESTRICT_PLASTICITY_STEPPING_STONES": 3
+      }
+    }
+  }
+}

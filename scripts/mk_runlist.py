@@ -13,7 +13,7 @@ def main():
     run_list_content = ""
     # Grab config specifications
     specs = None
-    with open("param/ss_exp_specs.json", "r") as fp:
+    with open("param/ss200_exp_specs.json", "r") as fp:
         specs = json.load(fp)
     # Go ahead and extract experiment name and list of treatment specifications
     experiment = specs["experiment"]
