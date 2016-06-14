@@ -27,7 +27,11 @@ def _extract_site_sequence(trace_fp):
         else:
             execution_states[current_state] += line
     # Step 2: extract site execution sequence
-    for state in execution_states[:-1]:
+    for si in range(0, len(execution_states) - 1):
+        state = execution_states[si]
+        if "# Final Memory" in state:
+            print ("Multiple runs in trace!?")
+            break
         # get instruction head location
         m = re.search(pattern = "IP:(\d+)", string = state)
         instr_head = int(m.group(1))
@@ -88,6 +92,7 @@ def main():
             with open(os.path.join(rep_loc, "env__" + envs[-1], "final_dominant.gen"), "r") as fp:
                 dom["sites"] = genome_from_genfile(fp)
             for env in envs:
+                print "Environment: " + env
                 tloc = os.path.join(rep_loc, "env__" + env, "trace")
                 fname = os.listdir(tloc)[0]
                 tloc = os.path.join(tloc, fname)
@@ -98,7 +103,7 @@ def main():
                 norm_site_usage = [0 for _ in range(0, len(dom["sites"]))]
                 # Calculate site usage
                 for i in range(0, len(trace["sites"])):
-                    site_usage[trace["sites"][i] % len(trace["sites"])] += 1
+                    site_usage[trace["sites"][i] % len(site_usage)] += 1
                     #print trace["sites"][i], trace["instructions"][i], dom["sites"][trace["sites"][i]]
                 # Calculate normalized site usage
                 for i in range(0, len(site_usage)):

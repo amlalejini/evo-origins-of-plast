@@ -14,7 +14,7 @@
     "analysis_scripts_to_run": ["population_analyze.cfg"]
   },
   "processing_config": {
-    "treatments_to_process": ["cycle-50-full-restricted", "cycle-200-full-restricted"]
+    "treatments_to_process": ["cycle-50-full-restricted", "cycle-200-full-restricted", "low-mut-uncon-restricted"]
   },
   "treatment_configs": {
     "shared_config": {
