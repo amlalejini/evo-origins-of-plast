@@ -98,7 +98,7 @@ def main():
                 norm_site_usage = [0 for _ in range(0, len(dom["sites"]))]
                 # Calculate site usage
                 for i in range(0, len(trace["sites"])):
-                    site_usage[trace["sites"][i]] += 1
+                    site_usage[trace["sites"][i] % len(trace["sites"])] += 1
                     #print trace["sites"][i], trace["instructions"][i], dom["sites"][trace["sites"][i]]
                 # Calculate normalized site usage
                 for i in range(0, len(site_usage)):
