@@ -1,0 +1,54 @@
+
+{
+  "_comment": "run_list composition settings",
+  "config_source_dir": "/home/parallels/devo_ws/evo-origins-of-plast/configs/change_rate_mc1",
+  "run_list_header": {
+    "email": "lalejini@msu.edu",
+    "email_when": "final",
+    "class_pref": "150",
+    "mem_request": "4",
+    "walltime": "4",
+    "config_dir": "/mnt/scratch/lalejini/change_rate_mc1/configs",
+    "dest_dir": "/mnt/scratch/lalejini/change_rate_mc1/data"
+  },
+  "shared_settings": {
+    "__comment": "Shared settings will be shared with multiple treatments. Each treatment will indicate what settings it will use for its runlist file.",
+    "replicates_begin-end": [1, 50],
+    "avida_config": "avida.cfg",
+    "ancestor_org": "default-heads.org",
+    "instruction_set": "instset-heads.cfg",
+    "executable": "avida",
+    "-set": {
+      "ENVIRONMENT_FILE": "environment.cfg",
+      "COPY_MUT_PROB": 0.0075,
+      "RESTRICT_PLASTICITY_STEPPING_STONES": 0
+    }
+  },
+  "experiment": "change_rate_mc_1",
+  "treatments": {
+    "c100": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "c100-events.cfg"
+      }
+    },
+    "c200": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "c200-events.cfg"
+      }
+    },
+    "c50": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "c50-events.cfg"
+      }
+    },
+    "c400": {
+      "inherit_from": "shared_settings",
+      "-set": {
+        "EVENT_FILE": "c400-events.cfg"
+      }
+    }
+  }
+}

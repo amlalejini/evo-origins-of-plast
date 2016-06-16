@@ -1,17 +1,16 @@
 
 // Setup data-specific parameters
-var dataPath = "data/fake-final_dominant_genome_usages.csv";
+var fdomDetailsDataPath = "data/final_dominant_detailed.csv";
+var dataPath = "data/final_dominant_genome_usages.csv";
 var yDomain = [0, 4000];
 var xDomain = [0, 100];
 var genomeExecutionMapWidth = 15;
 var envSpacer = 1;
-var phenSpacer = 3;
-var phenotypeIndicatorWidth = 5;
 var siteHeight = 3;
-var verticalMapBuffer = 50
-var repCanvasBuffer = 5;
+var verticalMapBuffer = 50  // Buffer between replicates
+var repCanvasBuffer = 20;   // Buffer on top of rep canvas
 // Colors from colorbrewer
-var colorsRange = ['#fff5eb', '#7f2704'];
+var colorsRange = ["white", "black"];//['#fff5eb', '#7f2704'];
 var legendElementWidth = 5;
 
 var currentTreatment = "cycle-200-full-restricted";
@@ -57,6 +56,13 @@ var dataAccessor = function(row) {
     replicate: replicate,
     environment: environment,
     sites: siteInfo
+  };
+}
+
+var fdomDetailsDataAccessor = function(row) {
+  var treatment = row.treatment;
+  return {
+    treatment: treatment
   };
 }
 
@@ -139,6 +145,7 @@ dataCallback = function(data) {
     // Clear everything from dataCanvas
     dataCanvas.selectAll("g").remove();
     dataCanvas.selectAll("line").remove();
+    dataCanvas.selectAll("text").remove();
     // Filter down to just this treatment.
     var treatmentData = data.filter(function(d) {
                                             return (d.treatment == currentTreatment);
@@ -156,7 +163,6 @@ dataCallback = function(data) {
                        "x2": xScale(xDomain[1]),
                        "y2": yScale(repVerticalLocation)
                      });
-      console.log(replicates[r]);
       //////////////////////////
       // Organize/retrieve relevant data
       //////////////////////////
@@ -165,8 +171,6 @@ dataCallback = function(data) {
       // Get environment-specific data for this replicate
       var envNAND = repData.filter(function(d) { return d.environment == "nand+not-"; })[0];
       var envNOT = repData.filter(function(d) { return d.environment == "nand-not+"; })[0];
-      console.log(envNAND);
-      console.log(envNOT);
       // Get the maximum # of executions
       var maxExecutions = d3.max([d3.max(envNAND.sites, function(d) { return d.usage; }),  d3.max(envNOT.sites, function(d) { return d.usage; }) ]);
       //////////////////////////
@@ -179,7 +183,6 @@ dataCallback = function(data) {
       // Make replicate canvas and sub-canvases
       //////////////////////////
       // The one canvas to rule them all (for this replicate)
-      console.log(repVerticalLocation);
       var repCanvas = dataCanvas.append("g").attr({
         "class": replicates[r],
         "transform": "translate(" + xScale(0) + "," + yScale(repVerticalLocation + repCanvasBuffer) + ")"
@@ -238,12 +241,44 @@ dataCallback = function(data) {
       // Draw labels for this replicate
       //////////////////////////
       // replicate label
+      repCanvas.append("text")
+               .attr({"x": xScale(1),
+                      "y": yScale(0 - repCanvasBuffer),//yScale(repVerticalLocation),
+                      "dy": "1em",
+                      "font-size": "2em"})
+                .text(replicates[r]);
       // ENV-NAND Map label
+      repCanvas.append("text")
+               .attr({"x": xScale(0),
+                      "y": yScale(0),
+                      "dy": "-1em"
+                      })
+               .text("ENV-NAND");
       // ENV-NOT map label
+      repCanvas.append("text")
+                .attr({"x": xScale(genomeExecutionMapWidth + envSpacer),
+                       "y": yScale(0),
+                       "dy": "-1em"
+                     })
+                .text("ENV-NOT");
       // legend label
+      repCanvas.append("text")
+               .attr({"x": xScale((genomeExecutionMapWidth + envSpacer) * 3),
+                      "y": yScale(0),
+                      "dy": "-1em"
+                    })
+                .text("Legend");
       // legend site-execution labels
       // Site labels
-      //////////////////////////
+      var siteLabelCanvas = repCanvas.append("g");
+      var siteLabels = siteLabelCanvas.selectAll("text").data(envNAND.sites);
+      siteLabels.enter().append("text");
+      siteLabels.exit().remove();
+      siteLabels.attr({"x": function(d, i) { return xScale((genomeExecutionMapWidth + envSpacer) * 2); },
+                       "y": function(d, i) { return yScale(i * siteHeight); },
+                       "dy": "1em"
+                      })
+                .text(function(d, i) { return d.inst; });
       // Update vertical location for next replicate
       //////////////////////////
       repVerticalLocation += (verticalMapBuffer + (envNAND.sites.length * siteHeight));
@@ -294,6 +329,7 @@ dataCallback = function(data) {
 }
 
 var main = function() {
+  // Load phenotype data for
   // Load data from csv and setup d3 callback
   d3.csv(dataPath, dataAccessor, dataCallback);
 }

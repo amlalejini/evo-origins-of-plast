@@ -13,13 +13,13 @@ def main():
     run_list_content = ""
     # Grab config specifications
     specs = None
-    with open("param/ss200_exp_specs.json", "r") as fp:
+    with open("param/change-rate-mc1_exp_specs.json", "r") as fp:
         specs = json.load(fp)
     # Go ahead and extract experiment name and list of treatment specifications
     experiment = specs["experiment"]
     treatments = specs["treatments"]
     local_config_src = specs["config_source_dir"] # Directory containing all relevant config files (where I'll drop the run_list)
-    print "Analyzing treatments: %s" % str(treatments.keys())
+    print "Generating treatments: %s" % str(treatments.keys())
     # Grab everything that belongs in the run list header
     description = "experiment: %s" % experiment
     class_pref = specs["run_list_header"]["class_pref"]

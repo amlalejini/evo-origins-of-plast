@@ -1,0 +1,17 @@
+set description experiment: change_rate_mc_1
+set class_pref 150
+set mem_request 4
+set email_when final
+set email lalejini@msu.edu
+set walltime 4
+set config_dir /mnt/scratch/lalejini/change_rate_mc1/configs
+set dest_dir /mnt/scratch/lalejini/change_rate_mc1/data
+
+1..50 c400__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE c400-events.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075  
+ 
+1..50 c50__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE c50-events.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075  
+ 
+1..50 c100__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE c100-events.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075  
+ 
+1..50 c200__rep ./avida -c avida.cfg -s $seed -set EVENT_FILE c200-events.cfg -set ENVIRONMENT_FILE environment.cfg -set RESTRICT_PLASTICITY_STEPPING_STONES 0 -set COPY_MUT_PROB 0.0075  
+ 
