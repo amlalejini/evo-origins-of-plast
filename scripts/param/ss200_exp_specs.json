@@ -31,7 +31,7 @@
       "inherit_from": "shared_settings",
       "-set": {
         "RESTRICT_PLASTICITY_STEPPING_STONES": 0,
-        "EVENT_FILE": "events-baseline-hres.cfg"
+        "EVENT_FILE": "events-baseline.cfg"
       }
     },
     "baseline-subopt-restricted": {

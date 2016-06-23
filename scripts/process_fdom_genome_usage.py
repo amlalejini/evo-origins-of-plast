@@ -48,7 +48,7 @@ def main():
     """
     main script functionality
     """
-    settings_fn = "param/ss_analysis_settings.json"
+    settings_fn = "param/change-rate-mc1_analysis_settings.json"
     settings = None
     # Load settings from settings file
     with open(settings_fn) as fp:

@@ -12,7 +12,7 @@ def main():
     """
     Main script
     """
-    settings_fn = "param/ss_analysis_settings.json"
+    settings_fn = "param/ss200_analysis_settings.json"
     settings = None
     # Load settings from settings file
     with open(settings_fn) as fp:
@@ -32,6 +32,20 @@ def main():
 
     for treatment in treats_to_analyze:
         print "Analyzing %s" % treatment
+        # First, define treatment specs and inherited specs
+        TSPEC = settings["treatment_configs"][treatment]
+        ISPEC = settings["treatment_configs"][settings["treatment_configs"][treatment]["inherit_from"]]
+        def _get_treatment_param(setting = None):
+            """
+            useful helper function for getting the correct parameter value
+            """
+            if setting in TSPEC.keys():
+                return TSPEC[setting]
+            elif setting in ISPEC.keys():
+                return ISPEC[setting]
+            else:
+                return None
+        # Make and run each analysis script specified in settings file
         for ascript in analyses:
             print "  Running %s" % ascript
             ascript_fpath = os.path.join(analysis_scripts_src, ascript)
@@ -44,6 +58,10 @@ def main():
                         modified_ascript += "SET d %s\n" % experiment_loc
                     elif line.strip() == "FOREACH t":
                         modified_ascript += "FOREACH t %s\n" % treatment
+                    elif line.strip() == "SET s":
+                        modified_ascript += "SET s %d\n" % _get_treatment_param("replicates_begin-end")[0]
+                    elif line.strip() == "SET f":
+                        modified_ascript += "SET f %d\n" % _get_treatment_param("replicates_begin-end")[1]
                     else:
                         modified_ascript += line
             ## WRITE ANALYSIS FILE TO RUN LOCATION ##
