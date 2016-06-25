@@ -1,7 +1,7 @@
 {
   "experiment_data": {
-    "base_location": "/mnt/scratch/lalejini/stepping_stones200",
-    "treatments": ["control-unrestricted", "high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
+    "base_location": "/mnt/home/lalejini/Data/stepping_stones200",
+    "treatments": ["control-unrestricted", "control-uncon-restricted", "control-subopt-restricted", "control-full-restricted", "control-unrestricted", "high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"],
     "avida_analysis_dump": "fdom_analysis",
     "avida_exp_dump": "data",
     "script_analysis_dump": "dataspace"
@@ -14,7 +14,7 @@
     "analysis_scripts_to_run": ["final_dom_analyze.cfg"]
   },
   "processing_config": {
-    "treatments_to_process": ["high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"]
+    "treatments_to_process": ["control-unrestricted", "control-uncon-restricted", "control-subopt-restricted", "control-full-restricted", "high-mut-full-restricted", "cycle-50-unrestricted", "low-mut-uncon-restricted", "cycle-50-subopt-restricted", "high-mut-subopt-restricted", "cycle-200-subopt-restricted", "cycle-200-uncon-restricted", "baseline-full-restricted", "low-mut-unrestricted", "cycle-50-full-restricted", "low-mut-full-restricted", "cycle-50-uncon-restricted", "low-mut-subopt-restricted", "high-mut-unrestricted", "baseline-subopt-restricted", "baseline-uncon-restricted", "baseline-unrestricted", "cycle-200-unrestricted", "high-mut-uncon-restricted", "cycle-200-full-restricted"]
   },
   "treatment_configs": {
     "shared_config": {
@@ -42,16 +42,16 @@
       "inherit_from": "shared_config"
     },
     "control-unrestricted": {
-      "inherit_from": "shared_settings"
+      "inherit_from": "shared_config"
     },
     "control-subopt-restricted": {
-      "inherit_from": "shared_settings"
+      "inherit_from": "shared_config"
     },
     "control-uncon-restricted": {
-      "inherit_from": "shared_settings"
+      "inherit_from": "shared_config"
     },
     "control-full-restricted": {
-      "inherit_from": "shared_settings"
+      "inherit_from": "shared_config"
     },
     "low-mut-unrestricted": {
       "inherit_from": "shared_config"

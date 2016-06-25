@@ -61,7 +61,7 @@ def main():
     """
     main script functionality
     """
-    settings_fn = "param/change-rate-mc1_analysis_settings.json"
+    settings_fn = "param/ss200_analysis_settings.json"
     settings = None
     # Load settings from settings file
     with open(settings_fn) as fp:
@@ -107,6 +107,7 @@ def main():
         total = 0
         for rep in reps:
             rep_id = rep.split("__rep_")[-1]
+            print " - rep: " + str(rep_id)
             rep_loc = os.path.join(analysis_loc, rep, "final_dominant")
             # What environments are we looking at?
             envs = [e.split("__")[-1] for e in os.listdir(rep_loc) if "env__" in e]
