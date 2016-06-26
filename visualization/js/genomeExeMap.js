@@ -1,20 +1,19 @@
 
 // Setup data-specific parameters
-var fdomDetailsDataPath = "data/final_dominant_detailed.csv";
-var dataPath = "data/final_dominant_genome_usages.csv";
+var fdomDetailsDataPath = "data/ss_final_dominant_detailed.csv";
+var dataPath = "data/crmc1_final_dominant_genome_usages.csv";
 var yDomain = [0, 4000];
 var xDomain = [0, 100];
-var genomeExecutionMapWidth = 15;
+var genomeExecutionMapWidth = 25;
 var envSpacer = 1;
-var siteHeight = 3;
+var siteHeight = 2.5;
 var verticalMapBuffer = 50  // Buffer between replicates
 var repCanvasBuffer = 20;   // Buffer on top of rep canvas
 // Colors from colorbrewer
-var colorsRange = ["white", "black"];//['#fff5eb', '#7f2704'];
+var colorsRange = ['white', '#a1dab4','#41b6c4','#225ea8'];//["white", "blue", "green", "red"];//['#fff5eb', '#7f2704'];
 var legendElementWidth = 5;
 
-var currentTreatment = "cycle-200-full-restricted";
-var currentReplicate = "cycle-200-full-restricted__rep_1";
+var currentTreatment = "low-mut-unrestricted";
 var treatments = [];
 var repsByTreatment = {};
 var totalSitesByTreatment = {}
@@ -70,7 +69,6 @@ dataCallback = function(data) {
   // Here is where we do some initial setup post data retrieval.
   // Setup canvas
   var chartArea = d3.select("#chart_area");
-
   var frame = chartArea.append("svg");
   var canvas = frame.append("g");
   frame.attr({"width": frameWidth, "height": frameHeight});
@@ -177,7 +175,7 @@ dataCallback = function(data) {
       // Setup color scale for heatmap
       //////////////////////////
       var colorScale = d3.scale.linear()
-                          .domain([0, maxExecutions])
+                          .domain([0, 0 * maxExecutions / 3.0 + 1, 2 * maxExecutions / 3.0, maxExecutions])
                           .range(colorsRange);
       //////////////////////////
       // Make replicate canvas and sub-canvases

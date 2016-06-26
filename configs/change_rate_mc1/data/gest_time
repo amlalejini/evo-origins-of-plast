@@ -1,0 +1,99 @@
+#filetype genotype_data
+#format num_cpus html r_tot ave_prop_nonoverlap sites_inv_x_tasks src_args exe_length total_task_count total_task_performance_count dom_num_cpus update_deactivated cells name phen_min_fitness executed_flags efficiency_ratio depth gest_offset total_cpus num_units fitness num_trials phen_max_fitness dom_depth viable src parents mating_display_a parent_muts sequence ave_tasks_per_site ave_sites_per_task parent_id copy_length comp_merit_ratio mating_display_b num_phen phen_likely_fitness prob_viable dom_sequence parent_dist frac_dead frac_neut task_list hw_type update_dead land_fitness mate_preference inst tasks_done sites_per_task ave_task_position total_units efficiency mate_id insts_tasks parent2_id lineage mating_type task_order comp_merit tasks_prop ancestor_dist gen_born phen_min_freq r_spec merit frac_neg alignment link tag div_type frac_pos gest_time phen_likely_freq env_input phen_entropy task_quality phen_max_fit_freq phen_avg_fitness id length update_born complexity task r_avail inst_set fitness_ratio alignment_executed_flags prob_task update dom_id task_length 
+
+# Legend:
+# 1: Number of CPUs
+# 2: Genome Sequence
+# 3: Resource 0 Total
+# 4: Average Proportion of the Non-overlapping Region of a Task
+# 5: Number of Sites Involved in 0 Tasks
+# 6: Genotype Source Arguments
+# 7: Executed Length
+# 8: # Different Tasks
+# 9: Total Tasks Performed
+# 10: Number of Dominant Organisms
+# 11: Update Dead
+# 12: Cells
+# 13: Genotype Name
+# 14: Phen Plast Minimum Fitness
+# 15: Executed Flags
+# 16: Rep. Efficiency Ratio
+# 17: Tree Depth
+# 18: Gest Offsets
+# 19: Total CPUs Ever
+# 20: Number of CPUs
+# 21: Fitness
+# 22: Number of Recalculation Trials
+# 23: Phen Plast Maximum Fitness
+# 24: Tree Depth of Dominant Genotype
+# 25: Is Viable (0/1)
+# 26: Genotype Transmission Type
+# 27: Parent String
+# 28: Mating display A
+# 29: Mutations from Parent
+# 30: Genome Sequence
+# 31: Average Number of Tasks Per Site
+# 32: Average Number of Sites Per Task
+# 33: Parent ID
+# 34: Copied Length
+# 35: Computational Merit Ratio
+# 36: Mating display B
+# 37: Number of Plastic Phenotypes
+# 38: Fitness of Most Likely Phenotype
+# 39: Probability Viable
+# 40: Dominant Genotype Sequence
+# 41: Parent Distance
+# 42: Fraction Mutations Lethal
+# 43: Fraction Mutations Neutral
+# 44: List of all tasks performed
+# 45: HW Type
+# 46: Update Dead
+# 47: Average Lanscape Fitness
+# 48: Mate preference
+# 49: # Times nop-A Executed
+# 50: Number of Tasks Performed
+# 51: Number of Sites Per Task 0
+# 52: Task 0 Position
+# 53: Total CPUs Ever
+# 54: Rep. Efficiency
+# 55: Mate Selection ID Number
+# 56: Number of Instructions Involved in Tasks
+# 57: Second Parent ID (sexual orgs)
+# 58: Unique Lineage Label
+# 59: Mating type (-1 = juvenile; 0 = female; 1 = male)
+# 60: Task Performance Order
+# 61: Computational Merit
+# 62: Proportion of Sites in Tasks
+# 63: Ancestor Distance
+# 64: Update Born
+# 65: Phen Plast Minimum Fitness Frequency
+# 66: # times specification 0 used
+# 67: Merit
+# 68: Fraction Mutations Detrimental
+# 69: Aligned Sequence
+# 70: Phenotype Map
+# 71: Genotype Tag
+# 72: Divide Type
+# 73: Fraction Mutations Beneficial
+# 74: Gestation Time
+# 75: Freq of Most Likely Phenotype
+# 76: task.0
+# 77: Phenotpyic Entropy
+# 78: Not
+# 79: Phen Plast Maximum Fitness Frequency
+# 80: Phen Plast Wtd Avg Fitness
+# 81: Genotype ID
+# 82: Genome Length
+# 83: Update Born
+# 84: Basic Complexity (beneficial muts are neutral)
+# 85: Not
+# 86: Resource 0 Available
+# 87: Instset
+# 88: Fitness Ratio
+# 89: Alignment Executed Flags
+# 90: Not (Probability)
+# 91: Update Output
+# 92: Dominant Genotype ID
+# 93: Task 0 Length
+
+0 <tt>wzcagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccczvfcaxgab</tt> -1 0 0  97 0 0 0 0  default-heads.org 0.249357 ---------------------------------------------------------------------------------------------------- 0 0  0 0 0.249357 1000 0.249357 0 1 0  0  wzcagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccczvfcaxgab 0 0 -1 100 0 0 1 0.249357 1 wzcagcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccczvfcaxgab 0 0.186538 0.17 00 0 0 0.202194 0 0 0 0 0 0 0.249357 -1 0 -1 0 -1  1 0 0 0 1 -1 97 0.0603846  <a href="tasksites.default-heads.org.html">Phenotype Map</a>  1 0.583077 389 1 252908703 0 0 1 0.249357 -1 100 0 17.6919 0 -1 heads_default 0 ---------------------------------------------------------------------------------------------------- 0 0 -1 0 

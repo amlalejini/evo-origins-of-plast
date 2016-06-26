@@ -1,0 +1,159 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #d9d9d9;
+  background: #333333; }
+
+.jumbotron {
+  text-align: center;
+  background: none;
+  padding-bottom: 5em;
+  padding-top: 5em;
+  margin: 0 0 0 0; }
+  .jumbotron .banner_link {
+    color: #d9d9d9; }
+    .jumbotron .banner_link:hover {
+      color: #d9d9d9;
+      text-decoration: none; }
+
+.navbar-default {
+  background-color: #262626;
+  border: none; }
+
+.navbar-default .navbar-nav > li > a {
+  color: #0077B8; }
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #005685; }
+
+.navbar-nav.nav-justified > li {
+  float: none; }
+
+.well {
+  background-color: #212121;
+  border: none; }
+
+.panel-default {
+  background-color: #262626;
+  border-color: #0077B8;
+  margin-right: 25px; }
+  .panel-default .panel-heading {
+    background-color: #262626;
+    border-color: #0077B8; }
+    .panel-default .panel-heading a {
+      text-decoration: none; }
+  .panel-default .text-box {
+    padding-top: 10px; }
+
+#lineage_vis_legend {
+  background-color: white; }
+
+h2 {
+  color: #0077B8; }
+
+.t-tip {
+  background-color: #333333;
+  color: #d9d9d9;
+  padding: 7px; }
+  .t-tip table, .t-tip th, .t-tip td {
+    border: 1px solid #d9d9d9;
+    text-align: center;
+    padding: 3px; }
+
+.state_block, .env_block, .env_canvas .nandpnotm, .env_canvas .nandmnotp, .env_canvas .nandpnotp, .C0000, .C0001, .C0010, .C0011, .C0100, .C0101, .C0110, .C0111, .C1000, .C1001, .C1010, .C1011, .C1100, .C1101, .C1110, .C1111 {
+  position: relative;
+  z-index: 1;
+  stroke: black; }
+  .state_block:hover, .env_block:hover, .env_canvas .nandpnotm:hover, .env_canvas .nandmnotp:hover, .env_canvas .nandpnotp:hover, .C0000:hover, .C0001:hover, .C0010:hover, .C0011:hover, .C0100:hover, .C0101:hover, .C0110:hover, .C0111:hover, .C1000:hover, .C1001:hover, .C1010:hover, .C1011:hover, .C1100:hover, .C1101:hover, .C1110:hover, .C1111:hover {
+    stroke-width: 3px;
+    z-index: 100; }
+
+.env_block:hover, .env_canvas .nandpnotm:hover, .env_canvas .nandmnotp:hover, .env_canvas .nandpnotp:hover {
+  stroke-width: 3px;
+  z-index: 100; }
+
+.lineage_filter_options {
+  float: none;
+  margin: 0 auto;
+  padding-top: 5px; }
+  .lineage_filter_options input {
+    margin: 0 10px 0 10px; }
+
+#chart_area {
+  background-color: white; }
+
+.axis path, .x_axis path, .y_axis path {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges; }
+.axis text, .x_axis text, .y_axis text {
+  font-family: sans-serif;
+  font-size: 18px; }
+
+.env_canvas .nandpnotm {
+  fill: #0000e6; }
+.env_canvas .nandmnotp {
+  fill: #1affff; }
+.env_canvas .nandpnotp {
+  fill: #0080e6; }
+
+.line, .nandpnotm_line, .nandmnotp_line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges; }
+
+.nandpnotm_line {
+  stroke: red;
+  opacity: 0.5; }
+
+.nandmnotp_line {
+  stroke: blue;
+  opacity: 0.5; }
+
+.C0000 {
+  fill: #666666; }
+
+.C0001 {
+  fill: #984ea3; }
+
+.C0010 {
+  fill: #e41a1c; }
+
+.C0011 {
+  fill: grey; }
+
+.C0100 {
+  fill: #e41a1c; }
+
+.C0101 {
+  fill: cyan; }
+
+.C0110 {
+  fill: #e41a1c; }
+
+.C0111 {
+  fill: #e41a1c; }
+
+.C1000 {
+  fill: #984ea3; }
+
+.C1001 {
+  fill: #4daf4a; }
+
+.C1010 {
+  fill: #0000cc; }
+
+.C1011 {
+  fill: #984ea3; }
+
+.C1100 {
+  fill: grey; }
+
+.C1101 {
+  fill: #984ea3; }
+
+.C1110 {
+  fill: #e41a1c; }
+
+.C1111 {
+  fill: white; }
+
+/*# sourceMappingURL=lineage_visualization_style.css.map */
