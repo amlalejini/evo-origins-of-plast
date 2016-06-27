@@ -57,6 +57,77 @@ def characterize_org(org_x_env, encoding):
     phenotype = _encode_phenotype(org_x_env, encoding)
     return {"plastic": is_plastic, "optimal": optimal, "full_phenotype": phenotype["full"], "coded_phenotype": phenotype["coded"]}
 
+def characterize_lineage_phenotypes(lineage_phenotype_sequence):
+    """
+    Given a sequence of phenotypes for a lineage, answer the following questions:
+        * Unconditional trait expression before conditional trait expression?
+        * Suboptimal conditional expression before optimal conditional expression?
+    Optimal here means optimal regulation (no regard for counts, just for express/not express)
+    Warning: This function is writen specifically for NAND+NOT-/NAND-NOT+ experiment data.
+    Warning pt2: This is a pretty hacked together function. Could easily be made more efficient/general.
+    """
+    suboptimal_before_optimal = None
+    unconNAND_before_conNAND = None
+    unconNOT_before_conNOT = None
+    #lineage_phenotype_sequence = ["0:0:0:0", "0:10:0:10","10:0:10:0", "10:0:8:0", "10:0:0:1"]
+    # Suboptimal before optimal?
+    subopt_flag = False
+    for p in lineage_phenotype_sequence:
+        p = map(int, p.split(":"))
+        env_nand = p[0:2]
+        env_not = p[2:len(p)]
+        plast = (env_nand != env_not)
+        opt = (env_nand[0] > 0 and env_nand[1] == 0) and (env_not[1] > 0 and env_not[0] == 0)
+        subopt = (env_nand != env_not) and (not opt)
+        if subopt:
+            subopt_flag = True
+        elif opt:
+            if subopt_flag:
+                suboptimal_before_optimal = True
+            else:
+                suboptimal_before_optimal = False
+            break
+    # Unconditional NAND before conditional NAND
+    unconNAND_flag = False
+    for p in lineage_phenotype_sequence:
+        p = map(int, p.split(":"))
+        env_nand = p[0:2]
+        env_not = p[2:len(p)]
+        nothing = (env_nand[0] == 0) and (env_not[0] == 0)
+        unconNAND = (env_nand[0] == env_not[0]) and (env_nand[0] > 0 and env_not[0] > 0)
+        if unconNAND:
+            unconNAND_flag = True
+        elif not nothing:
+            if unconNAND_flag:
+                unconNAND_before_conNAND = True
+            else:
+                unconNAND_before_conNAND = False
+            break
+    # Unconditional NOT before conditional NOT
+    unconNOT_flag = False
+    for p in lineage_phenotype_sequence:
+        p = map(int, p.split(":"))
+        env_nand = p[0:2]
+        env_not = p[2:len(p)]
+        nothing = (env_nand[1] == 0) and (env_not[1] == 0)
+        unconNOT = (env_nand[1] == env_not[1]) and (env_nand[1] > 0 and env_not[1] > 0)
+        if unconNOT:
+            unconNOT_flag = True
+        elif not nothing:
+            if unconNOT_flag:
+                unconNOT_before_conNOT = True
+            else:
+                unconNOT_before_conNOT = False
+            break
+    print {"suboptimal_before_optimal": suboptimal_before_optimal,
+            "unconditionalNAND_before_conditionalNAND": unconNAND_before_conNAND,
+            "unconditionalNOT_before_conditionalNOT": unconNOT_before_conNOT
+            }
+    return {"suboptimal_before_optimal": suboptimal_before_optimal,
+            "unconditionalNAND_before_conditionalNAND": unconNAND_before_conNAND,
+            "unconditionalNOT_before_conditionalNOT": unconNOT_before_conNOT
+            }
+
 def main():
     """
     main script functionality
@@ -72,7 +143,7 @@ def main():
     dump = os.path.join(experiment_loc, settings["experiment_data"]["script_analysis_dump"])
     mkdir_p(dump)
     # Pull out some other neato things
-    treats_to_process = settings["processing_config"]["treatments_to_process"]
+    treats_to_process = settings["processing_config"]["treatments_to_test"]
     # Create csv content
     # phenotype sequence format: C0000-C1111-...-C0101; full phenotype sequence format: 10:0:0:10-10:10:10:10-...-0:0:0:0
     # We're going to write out the detailed file line by line
@@ -80,7 +151,7 @@ def main():
     detailed_csv_path = os.path.join(dump, "final_dominant_detailed.csv")
     with open(detailed_csv_path, "w") as fp: fp.write(detailed_csv_header)
     # We'll just write the overview file out all at once
-    overview_csv_content = "treatment,total_plastic,proportion_plastic,total_optimal,proportion_optimal,total\n"
+    overview_csv_content = "treatment,total_plastic,proportion_plastic,total_optimal,proportion_optimal,total_subopt_before_optimal_in_lineages,total_optimal_in_lineages,proportion_subopt_before_optimal_in_lineages,total_unconNAND_before_conNAND_in_lineages,total_conNAND_in_lineages,proportion_unconNAND_before_conNAND_in_lineages,total_unconNOT_before_conNOT_in_lineages,total_conNOT_in_lineages,proportion_unconNOT_before_conNOT_in_lineages,total\n"
     for treatment in treats_to_process:
         print "Processing %s" % treatment
         # First, define treatment specs and inherited specs
@@ -105,6 +176,13 @@ def main():
         total_optimal = 0
         total_plastic = 0
         total = 0
+        # Sequence stats
+        total_subopt_before_opt = 0
+        total_unconNAND_before_conNAND = 0
+        total_unconNOT_before_conNOT = 0
+        total_achieve_conNOT = 0
+        total_achieve_conNAND = 0
+        total_achieve_opt = 0
         for rep in reps:
             rep_id = rep.split("__rep_")[-1]
             print " - rep: " + str(rep_id)
@@ -215,11 +293,21 @@ def main():
                     collapsed_full_phenotypes.append(":".join(map(str, cur_phen)))
                     collapsed_full_start_updates.append(cur_start)
                     collapsed_full_duration_updates.append(cur_duration)
+            # Characterize the lineage full phenotype sequence
+            lineage_characterization = characterize_lineage_phenotypes(collapsed_full_phenotypes)
             ##################################
             # Update overview stats
             if plastic: total_plastic += 1
             if optimal: total_optimal += 1
             total += 1
+
+            if lineage_characterization["suboptimal_before_optimal"]: total_subopt_before_opt += 1
+            if lineage_characterization["suboptimal_before_optimal"] != None: total_achieve_opt += 1
+            if lineage_characterization["unconditionalNOT_before_conditionalNOT"]: total_unconNOT_before_conNOT += 1
+            if lineage_characterization["unconditionalNOT_before_conditionalNOT"] != None: total_achieve_conNOT += 1
+            if lineage_characterization["unconditionalNAND_before_conditionalNAND"]: total_unconNAND_before_conNAND += 1
+            if lineage_characterization["unconditionalNAND_before_conditionalNAND"] != None: total_achieve_conNAND += 1
+
             #################################
             # Build detailed csv content line
             # format: "treatment,replicate,plastic,optimal,coded_phenotype,full_phenotype,fitness,lineage_coded_phenotype_sequence,lineage_coded_start_updates,lineage_coded_duration_updates,lineage_full_phenotype_sequence,lineage_full_start_updates,lineage_full_duration_updates\n"
@@ -237,10 +325,30 @@ def main():
             with open(detailed_csv_path, "a") as fp: fp.write(detailed_csv_line)
         #################
         # Build treatment overview line
+        #formatpt2: treatment,total_plastic,proportion_plastic,total_optimal,proportion_optimal,
+        #           total_subopt_before_optimal_in_lineages,total_optimal_in_lineages,proportion_subopt_before_optimal_in_lineages,
+        #           total_unconNAND_before_conNAND_in_lineages,total_conNAND_in_lineages,proportion_unconNAND_before_conNAND_in_lineages,
+        #           total_unconNOT_before_conNOT_in_lineages,total_conNOT_in_lineages,proportion_unconNOT_before_conNOT_in_lineages,
+        #           total
         # format: "treatment,total_plastic,total_optimal,total\n"
         prop_plastic = total_plastic / float(total)
         prop_optimal = total_optimal / float(total)
-        overview_csv_content += "%s,%d,%f,%d,%f,%d\n" % (treatment, total_plastic, prop_plastic, total_optimal, prop_optimal, total)
+        # Proportion subopt before opt?
+        prop_subopt_before_opt = 0
+        if total_achieve_opt != 0: prop_subopt_before_opt = total_subopt_before_opt / float(total_achieve_opt)
+        # Proportion uncon nand before con nand?
+        prop_unconNAND_before_conNAND = 0
+        if total_achieve_conNAND != 0: prop_unconNAND_before_conNAND = total_unconNAND_before_conNAND / float(total_achieve_conNAND)
+        # proportion uncon not before con not?
+        prop_unconNOT_before_conNOT = 0
+        if total_achieve_conNOT != 0: prop_unconNOT_before_conNOT = total_unconNOT_before_conNOT / float(total_achieve_conNOT)
+        # make content line
+
+        overview_csv_content += "%s,%d,%f,%d,%f,%d,%d,%d,%f,%d,%d,%f,%d,%d,%f\n" % (treatment, total_plastic, prop_plastic, total_optimal, prop_optimal,
+                                                                                    total_subopt_before_opt, total_achieve_opt, prop_subopt_before_opt,
+                                                                                    total_unconNAND_before_conNAND, total_achieve_conNAND, prop_unconNAND_before_conNAND,
+                                                                                    total_unconNOT_before_conNOT, total_achieve_conNOT, prop_unconNOT_before_conNOT,
+                                                                                    total)
     # Write out overview csv content
     with open(os.path.join(dump, "final_dominant_overview.csv"), "w") as fp: fp.write(overview_csv_content)
     print ("DONE")
