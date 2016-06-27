@@ -344,7 +344,7 @@ def main():
         if total_achieve_conNOT != 0: prop_unconNOT_before_conNOT = total_unconNOT_before_conNOT / float(total_achieve_conNOT)
         # make content line
 
-        overview_csv_content += "%s,%d,%f,%d,%f,%d,%d,%d,%f,%d,%d,%f,%d,%d,%f\n" % (treatment, total_plastic, prop_plastic, total_optimal, prop_optimal,
+        overview_csv_content += "%s,%d,%f,%d,%f,%d,%d,%f,%d,%d,%f,%d,%d,%f,%d\n" % (treatment, total_plastic, prop_plastic, total_optimal, prop_optimal,
                                                                                     total_subopt_before_opt, total_achieve_opt, prop_subopt_before_opt,
                                                                                     total_unconNAND_before_conNAND, total_achieve_conNAND, prop_unconNAND_before_conNAND,
                                                                                     total_unconNOT_before_conNOT, total_achieve_conNOT, prop_unconNOT_before_conNOT,
